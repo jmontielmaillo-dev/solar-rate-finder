@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solar Performance &amp; Rate Finder</title>
+<meta name="theme-color" content="#0f172a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Solar">
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a bill-shaped workbench. Inputs in three season columns up top, the verdict right under them, then the evidence (charts, ranking, exclusions).
+   Single dark navy theme, matching the finance dashboard on the same GitHub Pages site. */
+:root {
+  --bg: #0f172a;
+  --surface: #16213e;
+  --surface-2: #1b2a4a;
+  --ink: #e8ecf5;
+  --ink-2: #b4bfd6;
+  --ink-3: #93a1c0;
+  --line: #2a3a5c;
+  --accent: #5b9bff;
+  --accent-soft: #1d2f55;
+  --sun: #e8b84b;
+  --sun-soft: #2f2b1f;
+  --good: #3ecf8e;
+  --good-soft: #143534;
+  --warn: #e8b84b;
+  --bad: #ef6f6c;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s-current: #7d89a6; --m-color: #3ecf8e; --grid-color: #9085e9; --e-color: #6da7ec;
+  --f-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --r: 14px;
+  --ctl-h: 38px;
+  --gap: 14px;          /* space between boxes inside a section */
+  --gap-section: 28px;  /* space between sections */
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--f-body); }
+.wrap { max-width: 1220px; margin: 0 auto; padding-block: 28px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: var(--gap-section); }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 700; }
+h2 { font-size: 1.3rem; font-weight: 700; }
+h3 { font-size: 1.05rem; font-weight: 500; }
+p { margin: 0; }
+.muted { color: var(--ink-2); }
+.small { font-size: 0.85rem; }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-weight: 600; }
+a { color: var(--accent); }
+section { display: grid; gap: var(--gap); min-width: 0; }
+
+header.top { padding-bottom: 20px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: end; justify-content: space-between; }
+header.top .lead { max-width: 90ch; display: grid; gap: 8px; }
+.source { font-size: 0.82rem; color: var(--ink-2); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; }
+
+/* Months */
+.months { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+@media (max-width: 900px) { .months { grid-template-columns: 1fr; } }
+.month { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 12px; align-content: start; }
+.month.off { opacity: 0.55; }
+.month.off .fields { display: none; }
+.month-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.month-head input[type=text] { font: 500 1.05rem var(--f-display); border: none; background: transparent; color: var(--ink); padding: 2px 0; width: 100%; min-width: 0; border-bottom: 1px dashed var(--line); }
+.fields { display: grid; gap: 10px; }
+.row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.row.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+label.f { display: flex; flex-direction: column; justify-content: flex-end; gap: 3px; font-size: 0.78rem; color: var(--ink-2); min-width: 0; }
+/* fields in a row share one height, so inputs line up even when labels wrap */
+.settings-grid, .row, .prov-grid { align-items: stretch; }
+.kpi .eyebrow { min-height: 2.6em; align-items: flex-start; }
+label.f span.u { color: var(--ink-3); }
+input[type=number], input[type=text].plain, select { width: 100%; min-width: 0; height: var(--ctl-h); font: 0.95rem var(--f-mono); font-variant-numeric: tabular-nums; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); color: var(--ink); }
+select { font-family: var(--f-body); padding-right: 28px; }
+input:focus-visible, select:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.p1 { --pc: #d03b3b; } .p2 { --pc: #c98500; } .p3 { --pc: #0ca30c; }
+.ptag { display: inline-flex; align-items: center; gap: 5px; }
+.ptag::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--pc); }
+.surplus input { background: var(--sun-soft); border-color: color-mix(in srgb, var(--sun) 45%, var(--line)); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.seg button { border: 0; background: transparent; color: var(--ink-2); font: 500 0.78rem var(--f-body); padding: 5px 10px; cursor: pointer; }
+.seg button[aria-pressed=true] { background: var(--accent-soft); color: var(--accent); }
+.switch { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--ink-2); cursor: pointer; }
+.switch input { accent-color: var(--accent); width: 16px; height: 16px; }
+.tot { font-size: 0.8rem; color: var(--ink-3); }
+
+.bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+/* rows that mix labelled fields with buttons line up on the control baseline */
+.bar.fields-row { align-items: flex-end; }
+.seg { height: var(--ctl-h); }
+.seg button { height: 100%; }
+button.btn { font: 600 0.82rem var(--f-body); height: var(--ctl-h); padding: 0 14px; white-space: nowrap; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); cursor: pointer; }
+button.btn:hover { border-color: var(--accent); }
+button.btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+details.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); }
+details.panel > summary { cursor: pointer; padding: 12px 16px; font-weight: 600; list-style: none; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 12px; row-gap: 2px; }
+details.panel > summary::-webkit-details-marker { display: none; }
+details.panel > summary > span { flex: 1 1 240px; min-width: 0; }
+details.panel > summary::after { content: "+"; font-family: var(--f-mono); color: var(--ink-3); margin-left: auto; order: 9; }
+details.panel[open] > summary::after { content: "–"; }
+details.panel .inner { padding: 0 16px 16px; display: grid; gap: var(--gap); }
+.part { display: grid; gap: var(--gap-section); padding: 22px; border-radius: 18px; border: 1px solid var(--line); min-width: 0; }
+.part-measured { background: linear-gradient(180deg, color-mix(in srgb, var(--sun) 7%, var(--bg)) 0%, var(--bg) 320px); border-color: color-mix(in srgb, var(--sun) 35%, var(--line)); }
+.part-calc { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, var(--bg)) 0%, var(--bg) 320px); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.part-head { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.part-head .source { margin-left: auto; }
+.part-title { font-size: 1.6rem; }
+.part-tag { font: 700 0.72rem var(--f-body); letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; }
+.part-measured .part-tag { color: var(--sun); background: color-mix(in srgb, var(--sun) 16%, transparent); }
+.part-calc .part-tag { color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.empty { border: 1px dashed var(--line); border-radius: var(--r); padding: 18px; text-align: center; }
+@media (max-width: 600px) { .part { padding: 14px; border-radius: 14px; } .part-head .source { margin-left: 0; } }
+.drop { display: flex; gap: 12px; align-items: center; border: 1.5px dashed var(--line); border-radius: var(--r); padding: 14px 16px; cursor: pointer; background: var(--bg); }
+.drop.over { border-color: var(--accent); background: var(--accent-soft); }
+.drop input { max-width: 220px; font-size: 0.8rem; color: var(--ink-2); }
+#import-table td:first-child { text-align: center; }
+#import-table tr.proj td { background: var(--sun-soft); }
+.src-note { font-size: 0.78rem; color: var(--ink-3); }
+.settings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; }
+
+/* Verdict */
+.verdict { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.verdict > div { padding: 18px; display: grid; gap: 4px; align-content: start; border-left: 1px solid var(--line); min-width: 0; }
+.verdict > div:first-child { border-left: 0; background: var(--good-soft); }
+.verdict .big { font: 700 clamp(1.5rem, 3vw, 2rem)/1.1 var(--f-display); }
+.verdict > div.formula { grid-column: 1 / -1; order: 9; border-left: 0; border-top: 1px solid var(--line); background: var(--surface); }
+.derived { background: var(--sun-soft); border-radius: 7px; padding: 6px 9px; color: var(--ink-2); }
+.verdict .best-name { font: 700 1.35rem/1.2 var(--f-display); }
+@media (max-width: 800px) { .verdict { grid-template-columns: 1fr 1fr; } .verdict > div:first-child { grid-column: 1 / -1; } .verdict > div { border-left: 0; border-top: 1px solid var(--line); } }
+
+.charts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap); }
+@media (max-width: 900px) { .charts { grid-template-columns: 1fr; } }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 10px; min-width: 0; }
+.year { display: grid; gap: var(--gap); grid-template-columns: minmax(0, 1fr); }
+.year > .year-controls, .year > p, .year > .table-wrap, .year > .year-provider { grid-column: 1 / -1; }
+.learn { display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: var(--r); border: 1.5px solid var(--line); background: var(--surface-2); cursor: pointer; }
+.learn.on { border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--surface)); }
+.learn input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.learn-switch { flex: 0 0 auto; width: 52px; height: 30px; border-radius: 99px; background: var(--line); position: relative; transition: background .15s; }
+.learn-switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); transition: transform .15s; }
+.learn input:checked + .learn-switch { background: var(--good); }
+.learn input:checked + .learn-switch::after { transform: translateX(22px); }
+.learn input:focus-visible + .learn-switch { outline: 2px solid var(--accent); outline-offset: 3px; }
+.learn input:disabled + .learn-switch { opacity: 0.5; }
+.learn-text { display: grid; gap: 2px; font-size: 0.85rem; color: var(--ink-2); }
+.learn-text b { font-size: 1rem; color: var(--ink); }
+.learn.on .learn-text b { color: var(--good); }
+.band-key.bk-part { background: color-mix(in srgb, var(--m-color) 12%, transparent); border-style: dashed; }
+.src.part { color: var(--bg); background: color-mix(in srgb, var(--m-color) 55%, var(--e-color)); }
+.band-key { background: color-mix(in srgb, var(--m-color) 28%, transparent); border: 1px solid var(--m-color); }
+.year .chart-box.short { height: 400px; }
+@media (max-width: 600px) { .year .chart-box.short { height: 320px; } }
+.prof-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 6px; }
+.pm { display: grid; grid-template-rows: 70px auto auto auto auto auto; gap: 4px; justify-items: stretch; text-align: center; min-width: 0; position: relative; }
+.pm-bar { align-self: end; width: 100%; border-radius: 4px 4px 0 0; background: var(--e-color); opacity: 0.85; grid-row: 1; }
+.pm.data .pm-bar { background: var(--m-color); }
+.pm-m { font-weight: 600; font-size: 0.8rem; }
+.pm input[type=number] { text-align: center; padding: 6px 2px; }
+.pm input:disabled { opacity: 0.6; }
+.pm-k { font-size: 0.72rem; color: var(--ink-2); }
+.pm-s { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+.pm-use { font-size: 0.68rem; color: var(--ink-2); display: flex; gap: 4px; align-items: center; justify-content: center; }
+@media (max-width: 860px) { .prof-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .prof-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.paste-row { display: flex; gap: 10px; align-items: stretch; flex-wrap: wrap; }
+.paste-row textarea { flex: 1 1 260px; min-width: 0; font: 0.85rem var(--f-mono); background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+.prov-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px; }
+.prov-grid label.f.after input { opacity: 0.55; }
+.year > * { min-width: 0; }
+section, .part, .wrap, details.panel .inner { grid-template-columns: minmax(0, 1fr); }
+.inner > * { min-width: 0; }
+.part > *, section > * { min-width: 0; }
+@media (max-width: 900px) { .year { grid-template-columns: minmax(0, 1fr); } }
+.src { display: inline-block; font: 600 0.68rem var(--f-body); letter-spacing: 0.04em; padding: 2px 7px; border-radius: 99px; }
+.src.meas { color: var(--bg); background: var(--m-color); }
+.src.est { color: var(--bg); background: var(--e-color); }
+#year-table td:first-child { text-align: left; }
+#year-table tr.est-row td { color: var(--ink-2); }
+#year-table tfoot td { font-weight: 600; border-top: 1px solid var(--line); background: var(--surface-2); }
+.sav-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.2fr); gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.sav-flow > div { padding: 16px 18px; display: grid; gap: 4px; align-content: start; border-left: 1px solid var(--line); min-width: 0; }
+.sav-flow > div:first-child { border-left: 0; }
+.sav-flow .big { font: 700 clamp(1.4rem, 2.6vw, 1.9rem)/1.1 var(--f-display); font-variant-numeric: tabular-nums; }
+.sav-flow .total { background: var(--good-soft); }
+.sav-flow .total .big { color: var(--good); }
+.sav-flow .step { font-size: 0.8rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.sav-flow .step b { color: var(--good); font-weight: 600; }
+@media (max-width: 800px) { .sav-flow { grid-template-columns: 1fr 1fr; } .sav-flow > div { border-left: 0; border-top: 1px solid var(--line); } .sav-flow .total { grid-column: 1 / -1; } }
+#sav-table td:first-child { text-align: left; }
+#sav-table tfoot td { font-weight: 600; border-top: 1px solid var(--line); background: var(--surface-2); }
+.rank-title { font-size: 1.3rem; display: inline; }
+.rank-panel > summary { padding-block: 16px; }
+.charts.single { grid-template-columns: minmax(0, 1fr); }
+.charts.single .chart-box { height: 440px; }
+.info-panel { border-color: color-mix(in srgb, var(--accent) 65%, var(--line)); background: color-mix(in srgb, var(--accent) 13%, var(--surface)); }
+.info-panel > summary { padding-block: 16px; align-items: center; }
+.info-panel > summary::after { color: var(--accent); }
+details.panel > summary > .info-icon { flex: 0 0 26px; }
+.info-icon { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--accent); color: var(--bg); font: italic 700 0.95rem/1 Georgia, "Times New Roman", serif; }
+.rank-panel > summary::before { content: ""; flex: 0 0 auto; width: 26px; height: 26px; border-radius: 7px; align-self: center; background: color-mix(in srgb, var(--good) 22%, transparent) linear-gradient(var(--good), var(--good)) no-repeat; background-size: 4px 12px; background-position: 7px 9px; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--good) 50%, transparent); }
+.info-panel .method { max-width: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); font-size: 0.9rem; }
+.info-panel .method p { margin: 0; padding: 12px 14px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); line-height: 1.55; }
+.info-panel .method p b:first-child { display: block; color: var(--ink); font-size: 0.95rem; margin-bottom: 4px; }
+.info-panel .method p:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (max-width: 800px) { .info-panel .method { grid-template-columns: minmax(0, 1fr); } }
+.hourly { display: grid; gap: var(--gap); padding-top: var(--gap-section); border-top: 1px solid var(--line); }
+.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--ink-2); }
+.steps b { color: var(--ink); }
+.info-note { border-radius: 10px; }
+.info-note > summary { padding-block: 10px; align-items: center; font-size: 0.9rem; }
+.info-note > summary b { font-weight: 600; color: var(--ink); }
+.info-note .info-icon { width: 22px; height: 22px; font-size: 0.82rem; }
+.info-note .inner { padding-top: 0; }
+.info-note .inner p, .info-note .steps { color: var(--ink-2); line-height: 1.55; }
+.stack { display: grid; gap: var(--gap); }
+/* ---------- data uploads, data mode, section tints ---------- */
+.uploads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+@media (max-width: 860px) { .uploads { grid-template-columns: minmax(0, 1fr); } }
+.upload { align-content: start; gap: var(--gap); }
+.up-head { display: flex; gap: 12px; align-items: flex-start; }
+.up-head > div { flex: 1 1 auto; min-width: 0; display: grid; gap: 2px; }
+.up-num { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font: 700 0.95rem var(--f-display); background: var(--surface-2); border: 1px solid var(--line); color: var(--ink); }
+.chip.req { color: var(--sun); border-color: color-mix(in srgb, var(--sun) 50%, var(--line)); }
+.chip.opt { color: var(--ink-2); }
+.chip.ok { color: var(--good); border-color: color-mix(in srgb, var(--good) 50%, var(--line)); margin-left: 0; }
+.up-facts { font-size: 0.85rem; color: var(--ink-2); }
+.up-facts:empty { display: none; }
+.mode { display: grid; gap: var(--gap); padding: 16px; border-radius: var(--r); border: 1px solid color-mix(in srgb, var(--accent) 65%, var(--line)); background: color-mix(in srgb, var(--accent) 13%, var(--surface)); }
+.mode-head { display: flex; gap: 12px; align-items: flex-start; }
+.mode-head > div { display: grid; gap: 2px; color: var(--ink-2); }
+.mode-head b { color: var(--ink); font-size: 1rem; }
+.mode-opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+@media (max-width: 860px) { .mode-opts { grid-template-columns: minmax(0, 1fr); } }
+.mode-opt { display: grid; gap: 4px; align-content: start; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); opacity: 0.7; }
+.mode-opt b { color: var(--ink); }
+.mode-opt.on { opacity: 1; border-color: var(--good); background: color-mix(in srgb, var(--good) 12%, var(--surface)); }
+.mode-k { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+.mode-opt.on .mode-k { color: var(--good); }
+.part-data { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 6%, var(--bg)) 0%, var(--bg) 320px); }
+.part-solar { background: linear-gradient(180deg, color-mix(in srgb, var(--sun) 7%, var(--bg)) 0%, var(--bg) 320px); border-color: color-mix(in srgb, var(--sun) 35%, var(--line)); }
+.part-solar .part-tag { color: var(--sun); background: color-mix(in srgb, var(--sun) 16%, transparent); }
+.part-cons { background: linear-gradient(180deg, color-mix(in srgb, var(--grid-color) 8%, var(--bg)) 0%, var(--bg) 320px); border-color: color-mix(in srgb, var(--grid-color) 35%, var(--line)); }
+.part-cons .part-tag { color: var(--grid-color); background: color-mix(in srgb, var(--grid-color) 16%, transparent); }
+.part-data .part-tag { color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+/* charts never grow past their card */
+.card, .card > *, .charts > *, .stack > *, .year > *, .uploads > * { min-width: 0; }
+.drop { flex-wrap: wrap; }
+.drop > span { flex: 1 1 200px; min-width: 0; }
+.drop input { max-width: 100%; }
+.chart-box { width: 100%; min-width: 0; max-width: 100%; overflow: hidden; }
+.chart-box > canvas { display: block; max-width: 100%; }
+.pay-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.lt-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.lt-flow:empty { display: none; }
+@media (max-width: 700px) { .lt-flow { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 800px) { .pay-flow { grid-template-columns: 1fr 1fr; } }
+.settings-grid input[readonly] { background: transparent; border-style: dashed; color: var(--ink); }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--gap); }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; display: grid; gap: 2px; min-width: 0; }
+.kpi .v { font: 700 1.45rem/1.15 var(--f-display); font-variant-numeric: tabular-nums; }
+.kpi .v small { font-size: 0.8rem; font-weight: 500; color: var(--ink-3); }
+.kpi .k { display: flex; align-items: center; gap: 6px; }
+.kpi .k i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+#solar-table tfoot td { font-weight: 600; border-top: 1px solid var(--line); background: var(--surface-2); }
+.chart-box { position: relative; height: 420px; }
+.chart-box.short { height: 320px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.8rem; color: var(--ink-2); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+th, td { padding: 8px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); font-weight: 600; background: var(--surface); position: sticky; top: 0; }
+th:nth-child(-n+2), td:nth-child(-n+2) { text-align: left; }
+td.rate { white-space: normal; min-width: 200px; }
+td.rate b { font-weight: 600; }
+tr.best td { background: var(--good-soft); }
+tr.current td { background: var(--accent-soft); }
+tr:last-child td { border-bottom: 0; }
+.chip { display: inline-block; font: 600 0.68rem var(--f-body); letter-spacing: 0.04em; padding: 1px 6px; border-radius: 99px; border: 1px solid var(--line); color: var(--ink-2); margin-left: 4px; vertical-align: 1px; }
+.chip.bv { color: var(--sun); border-color: color-mix(in srgb, var(--sun) 50%, var(--line)); }
+.chip.fv { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+.chip.mine { color: var(--good); border-color: color-mix(in srgb, var(--good) 50%, var(--line)); }
+.neg { color: var(--good); }
+.pos { color: var(--warn); }
+
+.custom-table input { font-size: 0.82rem; padding: 5px 6px; }
+.custom-table td, .custom-table th { padding: 6px; }
+ul { margin: 0; padding-left: 18px; }
+.method { display: grid; gap: 8px; max-width: 75ch; font-size: 0.88rem; color: var(--ink-2); }
+.warnbox { background: var(--sun-soft); border-radius: 8px; padding: 8px 12px; font-size: 0.85rem; }
+
+/* ---------- touch & tablet ---------- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 25%, transparent); overscroll-behavior-y: none; }
+button, .seg button, summary, label.switch, .drop, input[type=checkbox], input[type=radio], select { touch-action: manipulation; }
+.table-wrap { -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+.chart-box canvas { touch-action: pan-y; }
+@media (pointer: coarse) {
+  /* comfortable tap targets and no iOS zoom-on-focus (inputs need >= 16px) */
+  :root { --ctl-h: 44px; }
+  input[type=number], input[type=text].plain, select, textarea, .paste-row textarea { font-size: 16px; }
+  button.btn { padding-inline: 14px; }
+  .seg button { font-size: 0.85rem; }
+  details.panel > summary { min-height: 48px; align-items: center; }
+  .switch { min-height: 44px; }
+  .switch input, input[type=checkbox], input[type=radio] { width: 22px; height: 22px; }
+  .drop { min-height: 72px; }
+  th, td { padding-block: 10px; }
+}
+/* iPad portrait and small laptops: 2-column grids become 1 column where charts need width */
+@media (min-width: 700px) and (max-width: 1100px) {
+  .months { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .month { padding: 12px; }
+  .row { gap: 6px; }
+  .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .verdict { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .verdict > div:first-child { grid-column: 1 / -1; }
+  .verdict > div { border-left: 0; border-top: 1px solid var(--line); }
+  .sav-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sav-flow .total { grid-column: 1 / -1; }
+}
+@media (min-width: 700px) and (max-width: 860px) {
+  .months { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 1100px) {
+  .charts, .year { grid-template-columns: minmax(0, 1fr); }
+  .chart-box { height: 360px; }
+}
+@media (max-width: 600px) {
+  .chart-box, .chart-box.short { height: 280px; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  h1 { font-size: 1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="lead">
+      <span class="eyebrow">Autoconsumo · Colmenar Viejo · tarifa 2.0TD</span>
+      <h1>Solar Performance &amp; Rate Finder</h1>
+    </div>
+  </header>
+
+  <div class="part part-data" id="data">
+    <div class="part-head">
+      <span class="part-tag">Your data</span>
+      <div><h2 class="part-title">Upload your files</h2><p class="muted small">Everything below is built from these files. The Enphase report is required; the i-DE file is optional and makes your consumption exact when you don't have a full year of Enphase data.</p></div>
+    </div>
+    <div class="uploads">
+      <div class="card upload" id="up-enphase">
+        <div class="up-head"><span class="up-num">1</span><div><h3>Enphase report</h3><p class="small muted">Solar production, home use, export and import from your gateway.</p></div><span class="chip req">Required</span></div>
+        <label class="drop" id="drop" for="csv-file">
+      <input type="file" id="csv-file" accept=".csv,text/csv">
+      <span><b>Choose or drop an Enlighten report CSV</b><br><span class="small muted">Daily or interval rows with Produced, Consumed, Exported to Grid and Imported from Grid. The file is read on this device and never uploaded.</span></span>
+    </label>
+        <p class="small" id="import-status" role="status"></p>
+        <div class="up-facts" id="up-enphase-facts"></div>
+        <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>How to export it from Enlighten</b></summary><div class="inner"><ol class="small steps">
+<li>Open Enlighten (app or enlighten.enphaseenergy.com) and go to the reports or data download section of your system.</li>
+<li>Create a report with <b>Energy Produced</b>, <b>Energy Consumed</b>, <b>Exported to Grid</b> and <b>Imported from Grid</b>. Consumption and grid values need consumption meters (CTs) on your gateway.</li>
+<li>Pick the whole period since installation, daily or in 15-minute/hourly steps, and download it as CSV.</li></ol>
+<p class="small">A full year of data means nothing has to be estimated. With less, the page estimates the missing months.</p></div></details>
+      </div>
+      <div class="card upload" id="up-ide">
+        <div class="up-head"><span class="up-num">2</span><div><h3>i-DE hourly consumption</h3><p class="small muted">Your home use, hour by hour, for a full year before the panels.</p></div><span class="chip opt">Optional</span></div>
+        <label class="drop" id="hourly-drop" for="hourly-file">
+        <input type="file" id="hourly-file" accept=".csv,text/csv">
+        <span><b>Choose or drop your consumption CSV</b><br><span class="small muted">Hourly consumption from your distributor (i-DE) for 1 January to 31 December of a year before your panels. The file stays on this device and your supply number (CUPS) is not saved.</span></span>
+      </label>
+        <p class="small" id="hourly-status" role="status"></p>
+        <div class="up-facts" id="up-ide-facts"></div>
+        <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>Where to get this file</b></summary><div class="inner">
+          <ol class="small steps">
+            <li>Sign in to the i-DE customer area and open your consumption page: <a href="https://www.i-de.es/area-privada/web/home/contract/consumption" target="_blank" rel="noopener">i-de.es · Área privada · Consumo</a>.</li>
+            <li>Choose the hourly consumption for a period and set it from <b>1 January</b> to <b>31 December</b> of a full year, ideally one before your panels were installed (for you, 2025).</li>
+            <li>Download it as CSV. The file is named like <span class="num">consumo_periodo_01-01-2025_31-12-2025.csv</span>.</li>
+          </ol>
+          <p class="small">i-DE is the distributor in your area; other distributors (or datadis.es) offer the same hourly CSV. Menu names on their sites may differ slightly.</p>
+        </div></details>
+        <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>What this file is used for</b></summary><div class="inner"><p class="small">A full year of hourly readings from before the panels shows your real home use month by month and at what hours you use it. The rate finder uses it automatically to build your consumption profile; nothing else to enter.</p></div></details>
+        <div class="bar" style="justify-content:flex-end" id="hourly-clear-row" hidden><button class="btn" type="button" id="hourly-clear">Remove this file</button></div>
+      </div>
+    </div>
+    <div class="mode" id="mode-panel"></div>
+    <div class="card upload" id="up-rate">
+      <div class="up-head"><span class="up-num">3</span><div><h3>Your current rate</h3><p class="small muted">Optional. Pick it from the list of rates or type its prices, and every result is compared against it.</p></div><span class="chip opt">Optional</span></div>
+      <div class="bar fields-row">
+        <label class="f" style="flex:1 1 320px">Current rate<select id="cur-select"></select></label>
+      </div>
+      <div class="settings-grid" id="cur-manual" hidden>
+        <label class="f">Name<input type="text" class="plain" id="cur-name" placeholder="e.g. Octopus 3"></label>
+        <label class="f">Power P1 punta <span class="u">€/kW·day</span><input type="number" id="cur-p1" min="0" step="0.000001"></label>
+        <label class="f">Power P2 valle <span class="u">€/kW·day</span><input type="number" id="cur-p2" min="0" step="0.000001"></label>
+        <label class="f">Energy P1 punta <span class="u">€/kWh</span><input type="number" id="cur-e1" min="0" step="0.000001"></label>
+        <label class="f">Energy P2 llano <span class="u">€/kWh</span><input type="number" id="cur-e2" min="0" step="0.000001"></label>
+        <label class="f">Energy P3 valle <span class="u">€/kWh</span><input type="number" id="cur-e3" min="0" step="0.000001"></label>
+        <label class="f">Surplus paid <span class="u">€/kWh, 0 if none</span><input type="number" id="cur-sur" min="0" step="0.0001"></label>
+        <label class="f">Monthly fee <span class="u">€/month</span><input type="number" id="cur-fee" min="0" step="0.01"></label>
+        <label class="switch"><input type="checkbox" id="cur-bv"> Virtual battery</label>
+      </div>
+      <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>Where to find your prices</b></summary><div class="inner"><p class="small">Your bill lists them under "Potencia" (€/kW·día for punta and valle) and "Energía activa" (€/kWh for punta, llano and valle). Use the prices without taxes. If your rate doesn't pay for surplus energy, leave "Surplus paid" at 0. For a single-price rate, enter the same price in all three energy boxes.</p></div></details>
+    </div>
+  </div>
+
+  <div class="part part-solar" id="solar">
+    <div class="part-head">
+      <span class="part-tag">Solar production</span>
+      <div><h2 class="part-title">What your panels produce</h2><p class="muted small" id="solar-sub"></p></div>
+    </div>
+    <p class="empty small muted" id="solar-empty">Upload your Enphase report to see your solar production.</p>
+    <div class="stack" id="solar-data" hidden>
+      <div class="bar" style="justify-content:flex-end"><span class="seg" role="group" aria-label="Chart values">
+        <button type="button" id="sd-perday" aria-pressed="true">Average per day</button>
+        <button type="button" id="sd-total" aria-pressed="false">Monthly total</button>
+      </span></div>
+      <div class="kpis" id="solar-kpis"></div>
+      <div class="charts single">
+        <div class="card">
+        <div><h3 id="sd-chart1-title">Energy per month</h3><p class="small muted" id="sd-chart1-sub"></p></div>
+        <div class="legend" id="sd-legend1"></div>
+        <div class="chart-box short"><canvas id="chart-solar-months" role="img" aria-label="Bar chart of production, solar used at home and export per month"></canvas></div>
+      </div>
+        
+      </div>
+      <div class="card">
+        <div class="bar" style="justify-content:space-between;align-items:flex-start">
+          <div><h3>Solar production through the year</h3><p class="small muted" id="solar-year-sub"></p></div>
+          <div class="legend" id="solar-year-legend"></div>
+        </div>
+        <div class="chart-box short"><canvas id="chart-solar-year" role="img" aria-label="Monthly solar production, measured and estimated"></canvas></div>
+      </div>
+      <div class="stack" id="solar-est-controls">
+        <div class="settings-grid year-controls">
+        <label class="f">December output vs June <span class="u">% of daily solar, sets the bell curve</span><input type="number" id="yr-winter-ratio" min="5" max="95" step="1"></label>
+        <label class="f">Estimated production vs fitted curve <span class="u">×, 1 = fitted to your measured months</span><input type="number" id="yr-prod" min="0" step="0.05"></label>
+        
+      </div>
+        <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>How missing months and days are estimated</b></summary><div class="inner">
+<p class="small"><b>Missing days in a month you have data for</b> (for example August, which starts on the 10th, or days the gateway didn't report): solar for those days follows the seasonal curve; home use per day is the average of the days you do have in that month; the share of solar you use at home and how your grid purchases split between P1, P2 and P3 follow the measured days. The month shows as <b>partly measured</b>, and the solar chart stacks the measured part (green) and the estimated part (blue).</p>
+<p class="small"><b>Months with no data at all:</b> solar follows one smooth seasonal curve that peaks at the June solstice and is fitted to all the days you have measured. Home use comes from your i-DE file when you have one, otherwise from the consumption profile. How much of that solar you use at home follows the day-by-day pattern of the measured month with the most similar sunshine.</p>
+<p class="small">A day counts as measured when the report has the whole day: any value for daily reports, or at least 22 hours for hourly or 15-minute reports.</p></div></details>
+      </div>
+    </div>
+  </div>
+
+  <div class="part part-cons" id="consumption">
+    <div class="part-head">
+      <span class="part-tag">Consumption</span>
+      <div><h2 class="part-title">How much you use, and when</h2><p class="muted small" id="cons-sub"></p></div>
+    </div>
+    <p class="empty small muted" id="cons-empty">Upload your Enphase report or your i-DE file to see your consumption.</p>
+    <div class="stack" id="cons-body" hidden>
+      <div class="kpis" id="cons-kpis"></div>
+      <div class="card" id="cons-year-card">
+        <div class="bar" style="justify-content:space-between;align-items:flex-start">
+          <div><h3>Yearly consumption profile</h3><p class="small muted" id="year-sub"></p></div>
+          <div class="legend" id="year-legend"></div>
+        </div>
+        <div class="chart-box short"><canvas id="chart-year" role="img" aria-label="Solar production per calendar month, measured and estimated, with home use and excess"></canvas></div>
+      </div>
+      <details class="panel year-provider" id="profile-panel" open>
+        <summary>Home use through the year <span class="small muted" style="font-weight:400">consumption profile for months without readings</span></summary>
+        <div class="inner">
+          <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>How the consumption profile works</b></summary><div class="inner"><p class="small">Months with real home use (Enphase, or your provider's hourly file or readings from before the panels) keep their value. Every other month follows the profile, scaled so it lines up with the months you have data for. Edit any month as a % of your average month.</p></div></details>
+          <div class="bar fields-row">
+            <label class="f" style="min-width:240px;flex:1 1 260px">Profile<select id="prof-preset"></select></label>
+
+            <button class="btn" type="button" id="prof-reset">Reset profile</button>
+          </div>
+          <label class="learn" id="learn-box" for="prof-auto">
+            <input type="checkbox" id="prof-auto" role="switch">
+            <span class="learn-switch" aria-hidden="true"></span>
+            <span class="learn-text"><b>Learn from my data</b><span id="learn-state"></span></span>
+          </label>
+          <div class="prof-grid" id="prof-grid"></div>
+        </div>
+      </details>
+      <div class="card" id="grid-period-card">
+        <div class="bar" style="justify-content:space-between;align-items:flex-start">
+          <div><h3>Grid purchases by time period</h3><p class="small muted">What you buy from the grid each month, split into P1 punta, P2 llano and P3 valle. This is what the rates price.</p></div>
+          <div class="legend" id="grid-period-legend"></div>
+        </div>
+        <div class="chart-box short"><canvas id="chart-grid-periods" role="img" aria-label="Monthly grid purchases by tariff period"></canvas></div>
+        <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>Which months are measured</b></summary><div class="inner"><p class="small">With an i-DE file covering a full year, every month is <b>measured</b>: your real hourly use sets what you buy from the grid in each period. Without it, the status follows Enphase: <b>measured</b> when Enphase covers every day of the month, <b>partly measured</b> when it covers only some days (the rest are estimated), and <b>estimated</b> otherwise. In the yearly consumption profile the status always follows Enphase, because only Enphase measures solar production and export.</p></div></details>
+      </div>
+      <div id="split-box" class="panel" hidden style="padding:14px 16px;display:grid;gap:var(--gap)">
+          <div class="settings-grid">
+            <label class="f">Weekday import in P1 punta <span class="u">%</span><input type="number" id="ws0" min="0" step="1"></label>
+            <label class="f">Weekday import in P2 llano <span class="u">%</span><input type="number" id="ws1" min="0" step="1"></label>
+            <label class="f">Weekday import in P3 valle <span class="u">%</span><input type="number" id="ws2" min="0" step="1"></label>
+          </div>
+          <details class="panel info-panel info-note" id="split-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>When you bought from the grid</b></summary><div class="inner"><p class="small">Daily rows don't say at what hour you imported. Weekends and national holidays are all P3 valle; weekday imports are split with these shares. The defaults (22 / 17 / 61) come from your Sep–Oct bill, which matches this data to within 1 kWh.</p></div></details>
+    </div>
+      
+      
+    </div>
+  </div>
+
+  <div class="part part-calc" id="calculated">
+    <div class="part-head">
+      <span class="part-tag">Calculated</span>
+      <div><h2 class="part-title">Rate finder</h2><p class="muted small">Your year priced as a full bill under every rate with solar compensation.</p></div>
+      <div class="source" id="source"></div>
+    </div>
+    <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>Where the rates come from</b></summary><div class="inner"><p class="small">All household rates with solar surplus compensation listed on simuladorfacturaluz.es. That site doesn't let other websites read its data directly from your browser, so the rates are copied into this page: on GitHub an automatic job checks the site every day and updates the list whenever a price changes. The date next to the source shows when the prices were last checked.</p></div></details>
+    <p class="empty small muted" id="rf-empty">Upload your Enphase report to compare rates.</p>
+    <div class="stack" id="rf-body" hidden>
+      <details class="panel" id="settings-panel" open>
+      <summary>Contracted power, taxes and options <span class="small muted" style="font-weight:400">two power periods: P1 punta 8–24h weekdays, P2 valle nights and weekends</span></summary>
+      <div class="inner">
+        <div class="settings-grid">
+          <label class="f">Contracted power P1 punta <span class="u">kW · 8–24h weekdays</span><input type="number" id="kw1" step="0.1" min="0"></label>
+          <label class="f">Contracted power P2 valle <span class="u">kW · 0–8h, weekends, holidays</span><input type="number" id="kw2" step="0.1" min="0"></label>
+          <label class="f">Meter rental <span class="u">€/day</span><input type="number" id="meter" step="0.000001" min="0"></label>
+          <label class="f">Electricity tax (IEE) <span class="u">% of power + energy</span><input type="number" id="iee" step="0.0001" min="0"></label>
+          <label class="f">IVA <span class="u">%</span><input type="number" id="vat" step="0.1" min="0"></label>
+        </div>
+        <div class="bar">
+          <label class="switch"><input type="checkbox" id="use-bv"> Count virtual-battery credit (surplus value beyond the legal cap is saved for later bills)</label>
+          <label class="switch"><input type="checkbox" id="fvonly"> Include rates exclusive to solar installations (FV*)</label>
+        </div>
+      </div>
+    </details>
+      
+      <section aria-labelledby="h-result">
+    <h2 id="h-result">Best rate</h2>
+    <div class="verdict" id="verdict"></div>
+  </section>
+      <div class="card" id="bill-card">
+        <div class="bar" style="justify-content:space-between;align-items:flex-start">
+          <div><h3>Estimated bill per month</h3><p class="small muted" id="year-bill-sub"></p></div>
+          <div class="legend" id="year-bill-legend"></div>
+        </div>
+        <div class="chart-box short"><canvas id="chart-year-bill" role="img" aria-label="Estimated bill per calendar month for the best rate and the current rate"></canvas></div>
+      </div>
+      <section aria-labelledby="h-savings" id="savings" hidden>
+    <div class="bar" style="justify-content:space-between;align-items:flex-end">
+      <div><h2 id="h-savings">What solar saves you</h2><p class="small muted" id="sav-sub"></p></div>
+    </div>
+    <div class="sav-flow" id="sav-flow"></div>
+    <div class="card" id="payback-card">
+      <div><h3>Installation cost and payback</h3><p class="small muted">Enter what the installation cost you, including VAT and any other taxes or fees, and the deductions you get back.</p></div>
+      <div class="settings-grid">
+        <label class="f">Installation cost <span class="u">€, including VAT and any other taxes or fees</span><input type="number" id="sav-cost" min="0" step="100" placeholder="e.g. 6500"></label>
+        <label class="f">IRPF deduction <span class="u">€</span><input type="number" id="irpf-ded" min="0" step="10" placeholder="e.g. 2600"></label>
+        <label class="f">IBI deduction <span class="u">€, total over all the years it applies</span><input type="number" id="ibi-ded" min="0" step="10" placeholder="e.g. 1200"></label>
+      </div>
+      <div class="sav-flow pay-flow" id="pay-flow"></div>
+      <div class="bar" style="justify-content:space-between;align-items:flex-end">
+        <div><h3>25-year outlook</h3><p class="small muted" id="lt-sub">Enter the installation cost to see when the panels pay for themselves and what they save over 25 years.</p></div>
+        <label class="f" style="width:200px">Production loss per year <span class="u">%, panel ageing</span><input type="number" id="lt-degr" min="0" max="5" step="0.1" value="1"></label>
+      </div>
+      <div class="sav-flow lt-flow" id="lt-flow"></div>
+      <div class="legend" id="lt-legend"></div>
+      <div class="chart-box"><canvas id="chart-lifetime" role="img" aria-label="Yearly savings and cumulative balance over 25 years"></canvas></div>
+      <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>How the deductions and payback are calculated</b></summary><div class="inner">
+        <p class="small"><b>IRPF deduction:</b> the amount you deduct in your income tax return. It is counted in year 1.</p>
+        <p class="small"><b>IBI deduction:</b> the total discount on your property tax over all the years it applies (in Colmenar Viejo, 50% of the yearly IBI for 4 years). It is spread evenly over years 1 to 4.</p>
+        <p class="small"><b>Net cost</b> = installation cost − IRPF deduction − IBI deduction. <b>Payback</b> is the year in which your running balance turns positive.</p>
+        <p class="small"><b>25-year outlook:</b> the balance starts at minus the installation cost. Each year adds that year's savings, which shrink with the panels' output (1% less production per year by default), plus the deductions. Electricity prices are kept at today's rates.</p>
+        <p class="small"><b>Equivalent annual return</b> is the yearly interest rate that would turn the installation cost into the same stream of savings and deductions over 25 years (the internal rate of return). It lets you compare the panels with a savings account or an investment fund.</p>
+      </div></details>
+    </div>
+    <div class="charts">
+      <div class="card">
+        <div><h3>Bill per month, with and without solar</h3><p class="small muted">Estimated full bills, taxes included.</p></div>
+        <div class="legend" id="sav-legend"></div>
+        <div class="chart-box short"><canvas id="chart-savings" role="img" aria-label="Monthly bill without solar, with solar on the current rate and with solar on the best rate"></canvas></div>
+      </div>
+      <div class="table-wrap" style="align-self:start"><table id="sav-table"></table></div>
+    </div>
+    <details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>How “without solar” is calculated</b></summary><div class="inner"><p class="small" id="sav-method"></p></div></details>
+  </section>
+      <div class="card">
+      <div><h3>Estimated yearly cost</h3><p class="small muted" id="chart1-sub">Every rate that can be priced for your year, cheapest first. Grey is your current rate.</p></div>
+      <div class="chart-box"><canvas id="chart-annual" role="img" aria-label="Bar chart of estimated yearly cost per rate"></canvas></div>
+    </div>
+      <details class="panel" id="year-details">
+        <summary><span>Month-by-month details <span class="small muted" style="font-weight:400">home use, solar, grid purchases and bills for each month</span></span></summary>
+        <div class="inner"><div class="table-wrap"><table id="year-table"></table></div><details class="panel info-panel info-note"><summary><span class="info-icon" aria-hidden="true">i</span><b>How measured and estimated months are built</b></summary><div class="inner"><p class="small">Measured months use your Enphase readings; partial months are scaled to the full month. For every other month, home use comes from your provider's hourly file (or typed readings) from before the installation when you have them, otherwise from the consumption profile. The hourly file also gives the real split of your use between P1, P2 and P3 and how much of it happens in daylight, which decides what solar can offset, and solar production follows a smooth seasonal curve that peaks at the June solstice and is fitted to the months Enphase measured. The day-by-day pattern of that measured month decides how much of the solar you use directly; it scales with home use but can't exceed what the panels produce.</p></div></details></div>
+      </details>
+      <details class="panel rank-panel" id="rank-panel" open>
+    <summary><h2 id="h-rank" class="rank-title">Full ranking</h2><span class="small muted" id="rank-summary" style="font-weight:400"></span></summary>
+    <div class="inner">
+      <div class="bar fields-row" style="justify-content:flex-end">
+        <label class="f" style="width:auto;min-width:220px">Monthly breakdown for<select id="breakdown-month"></select></label>
+      </div>
+      <div class="table-wrap"><table id="rank-table"></table></div>
+    </div>
+  </details>
+      <details class="panel info-panel" id="method-panel">
+    <summary><span class="info-icon" aria-hidden="true">i</span><h2 id="h-method" class="rank-title">How the bill is calculated</h2><span class="small muted" style="font-weight:400">what goes into each monthly bill, the yearly estimate and its limits</span></summary>
+    <div class="inner">
+      <div class="method">
+      <p><b>What the page needs.</b> Your Enphase report, which gives solar production, home use, export and grid purchases for every day it covers. Optionally, the hourly consumption file from i-DE for a full year before your panels, which gives your real home use for every month and at what hours you use it. There is no manual entry: everything is built from these files.</p>
+      <p><b>Monthly bill, per rate.</b> Power has two periods with their own contracted kW and their own price: P1 punta (8–24h on weekdays) and P2 valle (0–8h, weekends and holidays). Power = P1 kW × days × P1 €/kW·day + P2 kW × days × P2 €/kW·day. Many rates charge the same price for both. Energy = kWh bought in each period × €/kWh (P1 punta 10–14h and 18–22h weekdays, P2 llano 8–10h, 14–18h, 22–24h weekdays, P3 valle nights and weekends; single-price rates charge one price). Surplus credit = kWh exported × the rate's pre-tax €/kWh, capped at what the rate lets it offset (energy, or energy and power). Then the electricity tax (Impuesto Especial sobre la Electricidad, 5,11269632% of power + energy − credit, with a legal minimum of 1 €/MWh consumed), and IVA on that plus bono social, meter rental and any monthly fee.</p>
+      <p><b>How the year is built.</b> The rates are compared on twelve calendar months. With a full year of Enphase data, every month is measured. With less, the missing months are estimated: with the i-DE file, home use for those months is real and only solar is estimated; without it, home use follows the consumption profile you choose, scaled to the months you have measured.</p>
+      <p><b>Estimates.</b> Solar for a missing month follows a smooth seasonal curve that peaks at the June solstice, fitted to your measured months. How much of that solar you use directly follows the day-by-day pattern of your most similar measured month, and only the daylight part of your use (from the i-DE file) can be covered by it. Partial months are scaled to the full month. Yearly cost is the sum of the twelve bills, minus any virtual-battery credit.</p>
+      <p><b>Limits.</b> Rate data comes from simuladorfacturaluz.es and is refreshed weekly. Only household rates are compared: plans that require a high annual consumption are left out, as are indexed rates (PVPC, OMIE) and rates with their own time bands, which can't be priced from three-period data. Rates that don't fit your contracted power or yearly consumption are skipped too. Some virtual batteries carry their own fee or expiry; check the provider's terms.</p>
+    </div>
+    </div>
+  </details>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="calc.js"></script>
+<script src="importer.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

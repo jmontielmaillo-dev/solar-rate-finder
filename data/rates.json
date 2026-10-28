@@ -1,0 +1,1342 @@
+{
+  "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
+  "fetchedAt": "2026-10-28T09:00:00.000Z",
+  "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
+  "rates": [
+    {
+      "id": "pvpc-pvpc-2-0td-2026-2-0td-pvpc",
+      "provider": "PVPC",
+      "plan": "PVPC 2.0TD (2026)",
+      "url": null,
+      "updated": "1 Ene 2026",
+      "accessTariff": "2.0TD (PVPC)",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "IDX",
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": true,
+      "comparable": false,
+      "notComparableReason": "Indexed price (PVPC/OMIE), varies hour by hour",
+      "power": {
+        "p1": 0.075903,
+        "p2": 0.001987
+      },
+      "energy": null,
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": null,
+        "priceText": "PVPC",
+        "compensates": "Solo energía",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "iberdrola-plan-online-2-0a",
+      "provider": "Iberdrola",
+      "plan": "Plan Online",
+      "url": "https://www.iberdrola.es/luz/plan-online",
+      "updated": "16 Sep 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV",
+        "BV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.119151,
+        "p2": 0.078055
+      },
+      "energy": {
+        "e1": 0.1499,
+        "e2": 0.1499,
+        "e3": 0.1499
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.03,
+        "priceText": "0,03",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx acum. 1000 €/mes",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "iberdrola-plan-online-3-periodos-2-0td",
+      "provider": "Iberdrola",
+      "plan": "Plan Online 3 periodos",
+      "url": "https://www.iberdrola.es/luz/plan-online-tres-periodos",
+      "updated": "16 Sep 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV",
+        "BV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.091074,
+        "p2": 0.013483
+      },
+      "energy": {
+        "e1": 0.217,
+        "e2": 0.162,
+        "e3": 0.129
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.03,
+        "priceText": "0,03",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx acum. 1000 €/mes",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "iberdrola-plan-estable-2-0a",
+      "provider": "Iberdrola",
+      "plan": "Plan Estable",
+      "url": "https://www.iberdrola.es/luz/plan-estable",
+      "updated": "2 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV",
+        "BV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.109562,
+        "p2": 0.086274
+      },
+      "energy": {
+        "e1": 0.159269,
+        "e2": 0.159269,
+        "e3": 0.159269
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.05,
+        "priceText": "0,05",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx acum. 1000 €/mes",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "iberdrola-plan-mas-ahorro-2-0a",
+      "provider": "Iberdrola",
+      "plan": "Plan Más Ahorro",
+      "url": "https://www.iberdrola.es/luz/plan-mas-ahorro",
+      "updated": "2 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV",
+        "BV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.109562,
+        "p2": 0.086274
+      },
+      "energy": {
+        "e1": 0.17991,
+        "e2": 0.17991,
+        "e3": 0.17991
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.05,
+        "priceText": "0,05",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx acum. 1000 €/mes",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "iberdrola-plan-solar-iber-ps2",
+      "provider": "Iberdrola",
+      "plan": "Plan Solar",
+      "url": "https://www.iberdrola.es/luz/tarifas/plan-solar",
+      "updated": "2 Oct 2026",
+      "accessTariff": "IBER.PS2",
+      "periods": null,
+      "schedule": "Horario especial IBER.PS2",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV*",
+        "BV"
+      ],
+      "fvOnly": true,
+      "indexed": false,
+      "comparable": false,
+      "notComparableReason": "Uses its own time bands (IBER.PS2), not the standard 3 periods",
+      "power": {
+        "p1": 0.109562,
+        "p2": 0.086274
+      },
+      "energy": {
+        "e1": 0.2798,
+        "e2": 0.1399,
+        "e3": null
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx acum. 1000 €/mes",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "iberdrola-plan-ahorro-inteligente-iber-8h-con",
+      "provider": "Iberdrola",
+      "plan": "Plan Ahorro Inteligente",
+      "url": "https://www.iberdrola.es/luz/plan-ahorro-inteligente",
+      "updated": "2 Oct 2026",
+      "accessTariff": "IBER.8H+CON",
+      "periods": null,
+      "schedule": "Horario especial IBER.8H+CON",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": false,
+      "notComparableReason": "Uses its own time bands (IBER.8H+CON), not the standard 3 periods",
+      "power": {
+        "p1": 0.109562,
+        "p2": 0.086274
+      },
+      "energy": {
+        "e1": 0.23998,
+        "e2": 0.11999,
+        "e3": null
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.05,
+        "priceText": "0,05",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "naturgy-tarifa-por-uso-luz-2-0a",
+      "provider": "Naturgy",
+      "plan": "Tarifa Por Uso Luz",
+      "url": "https://www.naturgy.es/hogar/luz/tarifa_por_uso_luz",
+      "updated": "1 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 15,
+      "cae": "CAE < 10 MWh",
+      "tags": [
+        "FV",
+        "BV",
+        "CAE < 10 MWh"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.12303,
+        "p2": 0.061562
+      },
+      "energy": {
+        "e1": 0.123,
+        "e2": 0.123,
+        "e3": 0.123
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx hucha 60 meses",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "naturgy-tarifa-noche-2-0td",
+      "provider": "Naturgy",
+      "plan": "Tarifa Noche",
+      "url": "https://www.naturgy.es/hogar/luz/tarifa_noche",
+      "updated": "1 Oct 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": "CAE < 10 MWh",
+      "tags": [
+        "FV",
+        "BV",
+        "CAE < 10 MWh"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.12303,
+        "p2": 0.061562
+      },
+      "energy": {
+        "e1": 0.193,
+        "e2": 0.1201,
+        "e3": 0.085
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx hucha 60 meses",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "naturgy-tarifa-solar-2-0td",
+      "provider": "Naturgy",
+      "plan": "Tarifa Solar",
+      "url": "https://www.naturgy.es/hogar/solar/tarifa_solar",
+      "updated": "1 Oct 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": "CAE < 10 MWh",
+      "tags": [
+        "FV*",
+        "BV",
+        "CAE < 10 MWh"
+      ],
+      "fvOnly": true,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.12303,
+        "p2": 0.061562
+      },
+      "energy": {
+        "e1": 0.193,
+        "e2": 0.1201,
+        "e3": 0.085
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx hucha 60 meses",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "repsol-tarifa-solar-bateria-virtual-2-0a",
+      "provider": "Repsol",
+      "plan": "Tarifa Solar Batería Virtual",
+      "url": "https://www.repsol.es/particulares/hogar/energia-solar/tarifas/tarifa-bateria-virtual/",
+      "updated": "1 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV*",
+        "BV",
+        "CM"
+      ],
+      "fvOnly": true,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.090137,
+        "p2": 0.090137
+      },
+      "energy": {
+        "e1": 0.1499,
+        "e2": 0.1499,
+        "e3": 0.1499
+      },
+      "emc": null,
+      "monthlyFee": 1.99,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "total-energies-aire-siempre-cae-lt-4-mwh-2-0a",
+      "provider": "Total Energies",
+      "plan": "Aire Siempre (CAE<4 MWh)",
+      "url": "https://www.totalenergies.es/es/hogares/tarifas-luz/a-tu-aire-siempre",
+      "updated": "16 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 10,
+      "cae": "CAE < 4 MWh",
+      "tags": [
+        "FV",
+        "CAE < 4 MWh"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.094493,
+        "p2": 0.094493
+      },
+      "energy": {
+        "e1": 0.1199,
+        "e2": 0.1199,
+        "e3": 0.1199
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.07,
+        "priceText": "0,07",
+        "compensates": "Solo energía",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "total-energies-aire-ahorro-cae-lt-4-mwh-2-0td",
+      "provider": "Total Energies",
+      "plan": "Aire Ahorro (CAE<4 MWh)",
+      "url": "https://www.totalenergies.es/es/hogares/tarifas-luz/a-tu-aire-programa-tu-ahorro",
+      "updated": "16 Oct 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 10,
+      "cae": "CAE < 4 MWh",
+      "tags": [
+        "FV",
+        "CAE < 4 MWh"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.094493,
+        "p2": 0.094493
+      },
+      "energy": {
+        "e1": 0.183572,
+        "e2": 0.11393,
+        "e3": 0.086176
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.07,
+        "priceText": "0,07",
+        "compensates": "Solo energía",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "bonpreu-solar-2-0td",
+      "provider": "Bonpreu",
+      "plan": "Solar",
+      "url": "https://www.bonpreuesclat.cat/es/planes-energia-bonpreu",
+      "updated": "7 Sep 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV*",
+        "BV"
+      ],
+      "fvOnly": true,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.072999,
+        "p2": 0.072999
+      },
+      "energy": {
+        "e1": 0.205003,
+        "e2": 0.128574,
+        "e3": 0.098753
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.031,
+        "priceText": "0,031",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, antes de impuestos, aplicable mes siguiente",
+        "beforeTax": true,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "electra-energia-plan-fijo-2-0a",
+      "provider": "Electra energía",
+      "plan": "Plan fijo",
+      "url": "https://electracaldenseenergia.com/es/luz/",
+      "updated": "1 Abr 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.086376,
+        "p2": 0.003485
+      },
+      "energy": {
+        "e1": 0.174056,
+        "e2": 0.174056,
+        "e3": 0.174056
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.025,
+        "priceText": "0,025",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "electra-energia-pla-flexa-2-pla-flexa-2",
+      "provider": "Electra energía",
+      "plan": "Pla Flexa 2",
+      "url": "https://electracaldenseenergia.com/es/luz/",
+      "updated": "1 Abr 2026",
+      "accessTariff": "PLA FLEXA 2",
+      "periods": null,
+      "schedule": "Horario especial PLA FLEXA 2",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": false,
+      "notComparableReason": "Uses its own time bands (PLA FLEXA 2), not the standard 3 periods",
+      "power": {
+        "p1": 0.086376,
+        "p2": 0.003485
+      },
+      "energy": {
+        "e1": 0.211106,
+        "e2": 0.139823,
+        "e3": null
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.025,
+        "priceText": "0,025",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "electra-energia-plan-flexa-2-2-0td",
+      "provider": "Electra energía",
+      "plan": "Plan Flexa 2",
+      "url": "https://electracaldenseenergia.com/es/luz/",
+      "updated": "1 Abr 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.086376,
+        "p2": 0.003485
+      },
+      "energy": {
+        "e1": 0.238826,
+        "e2": 0.16786,
+        "e3": 0.138133
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.025,
+        "priceText": "0,025",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "estabanell-pla-solar-estabanell-ps",
+      "provider": "Estabanell",
+      "plan": "Pla Solar",
+      "url": "https://estabanell.com/energia/solar/",
+      "updated": "17 Feb 2026",
+      "accessTariff": "Estabanell PS",
+      "periods": null,
+      "schedule": "Horario especial Estabanell PS",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV*"
+      ],
+      "fvOnly": true,
+      "indexed": false,
+      "comparable": false,
+      "notComparableReason": "Uses its own time bands (Estabanell PS), not the standard 3 periods",
+      "power": {
+        "p1": 0.114259,
+        "p2": 0.040344
+      },
+      "energy": {
+        "e1": 0.213,
+        "e2": 0.088,
+        "e3": null
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.03,
+        "priceText": "0,03",
+        "compensates": "Solo energía",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "gana-energia-tarifa-24-horas-2-0a",
+      "provider": "Gana Energía",
+      "plan": "Tarifa 24 horas",
+      "url": "https://ganaenergia.com/tarifas-luz/24-horas",
+      "updated": "5 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.099,
+        "p2": 0.099
+      },
+      "energy": {
+        "e1": 0.139,
+        "e2": 0.139,
+        "e3": 0.139
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "gana-energia-tarifa-precio-de-mercado-2-0td-indexado",
+      "provider": "Gana Energía",
+      "plan": "Tarifa Precio de Mercado",
+      "url": "https://ganaenergia.com/tarifas-luz/precio-mercado",
+      "updated": "1 Jul 2026",
+      "accessTariff": "2.0TD (Indexado)",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "IDX",
+        "FV",
+        "CM"
+      ],
+      "fvOnly": false,
+      "indexed": true,
+      "comparable": false,
+      "notComparableReason": "Indexed price (PVPC/OMIE), varies hour by hour",
+      "power": {
+        "p1": 0.076,
+        "p2": 0.002
+      },
+      "energy": null,
+      "emc": null,
+      "monthlyFee": 5.01,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "goiener-2-0td-2-0td",
+      "provider": "GoiEner",
+      "plan": "2.0TD",
+      "url": "https://www.goiener.com/es/tarifas/fijas/2-0td/",
+      "updated": "31 Ago 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.081382,
+        "p2": 0.007467
+      },
+      "energy": {
+        "e1": 0.344871,
+        "e2": 0.258543,
+        "e3": 0.213641
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.0675,
+        "priceText": "0,0675",
+        "compensates": "Solo energía",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "helios-energia-cuenta-verde-2-0td-indexado",
+      "provider": "Helios Energía",
+      "plan": "Cuenta verde",
+      "url": "https://heliosenergia.es/",
+      "updated": "7 Oct 2022",
+      "accessTariff": "2.0TD (Indexado)",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "IDX",
+        "FV*",
+        "BV",
+        "CM"
+      ],
+      "fvOnly": true,
+      "indexed": true,
+      "comparable": false,
+      "notComparableReason": "Indexed price (PVPC/OMIE), varies hour by hour",
+      "power": {
+        "p1": 0.075903,
+        "p2": 0.001987
+      },
+      "energy": null,
+      "emc": 0.01,
+      "monthlyFee": 4,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": null,
+        "priceText": "OMIE-0,005",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "imagina-energia-tarifa-sin-horas-2-0a",
+      "provider": "Imagina Energía",
+      "plan": "Tarifa Sin Horas",
+      "url": "https://imaginaenergia.com/tarifa-luz-sin-horas/",
+      "updated": "21 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.136,
+        "p2": 0.086
+      },
+      "energy": {
+        "e1": 0.119,
+        "e2": 0.119,
+        "e3": 0.119
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.04,
+        "priceText": "0,04",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "imagina-energia-tarifa-noche-y-findes-2-0td",
+      "provider": "Imagina Energía",
+      "plan": "Tarifa noche y findes",
+      "url": "https://imaginaenergia.com/tarifa-luz-noche-y-findes/",
+      "updated": "21 Oct 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.121,
+        "p2": 0.078
+      },
+      "energy": {
+        "e1": 0.184,
+        "e2": 0.124,
+        "e3": 0.099
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.03,
+        "priceText": "0,03",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "imagina-energia-plan-solar-2-0a",
+      "provider": "Imagina Energía",
+      "plan": "Plan Solar",
+      "url": "https://imaginaenergia.com/tarifa-luz-solar/",
+      "updated": "21 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV*",
+        "BV"
+      ],
+      "fvOnly": true,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.136,
+        "p2": 0.086
+      },
+      "energy": {
+        "e1": 0.119,
+        "e2": 0.119,
+        "e3": 0.119
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.04,
+        "priceText": "0,04",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "lidera-energia-bateria-virtual-2-0td-indexado",
+      "provider": "Lidera Energía",
+      "plan": "Batería virtual",
+      "url": "https://www.lideraenergia.com/bateria-virtual-a/",
+      "updated": "2 Oct 2022",
+      "accessTariff": "2.0TD (Indexado)",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "IDX",
+        "FV*",
+        "BV",
+        "CM"
+      ],
+      "fvOnly": true,
+      "indexed": true,
+      "comparable": false,
+      "notComparableReason": "Indexed price (PVPC/OMIE), varies hour by hour",
+      "power": {
+        "p1": 0.075903,
+        "p2": 0.001987
+      },
+      "energy": null,
+      "emc": null,
+      "monthlyFee": 9.95,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": null,
+        "priceText": "OMIE",
+        "compensates": "Potencia + consumo + f. Bono Social + cuota mensual",
+        "includesPower": true
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "lumio-lumio-2-0td-indexado",
+      "provider": "Lumio",
+      "plan": "Lumio",
+      "url": "https://www.lumio.solar/tarifas-de-luz/",
+      "updated": "4 Mar 2026",
+      "accessTariff": "2.0TD (Indexado)",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "IDX",
+        "FV*",
+        "BV",
+        "CM"
+      ],
+      "fvOnly": true,
+      "indexed": true,
+      "comparable": false,
+      "notComparableReason": "Indexed price (PVPC/OMIE), varies hour by hour",
+      "power": {
+        "p1": 0.075903,
+        "p2": 0.001988
+      },
+      "energy": null,
+      "emc": 0.018,
+      "monthlyFee": 2.99,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": null,
+        "priceText": "OMIE 90%",
+        "compensates": "Potencia + consumo",
+        "includesPower": true
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "niba-niba-zen-2-0a",
+      "provider": "Niba",
+      "plan": "niba Zen",
+      "url": "https://niba.es/",
+      "updated": "5 Oct 2026",
+      "accessTariff": "2.0A",
+      "periods": 1,
+      "schedule": "Horario estándar 2.0A",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV",
+        "BV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.091,
+        "p2": 0.091
+      },
+      "energy": {
+        "e1": 0.123,
+        "e2": 0.123,
+        "e3": 0.123
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx hucha 24 meses",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "niba-niba-tres-2-0td",
+      "provider": "Niba",
+      "plan": "niba Tres",
+      "url": "https://niba.es/",
+      "updated": "5 Oct 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "FV",
+        "BV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.077,
+        "p2": 0.077
+      },
+      "energy": {
+        "e1": 0.197,
+        "e2": 0.147,
+        "e3": 0.087
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.06,
+        "priceText": "0,06",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos, aplicable mes siguiente | Máx hucha 24 meses",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "octopus-energy-octopus-solar-2-0td",
+      "provider": "Octopus Energy",
+      "plan": "Octopus Solar",
+      "url": "https://octopusenergy.es/precios/tarifa-solar",
+      "updated": "25 Oct 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV*",
+        "BV"
+      ],
+      "fvOnly": true,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.118356,
+        "p2": 0.118356
+      },
+      "energy": {
+        "e1": 0.273,
+        "e2": 0.17,
+        "e3": 0.143
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.035,
+        "priceText": "0,035",
+        "compensates": "Consumo",
+        "includesPower": false
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "proxima-energia-tarifa-de-luz-fv-2-0td-indexado",
+      "provider": "Próxima Energía",
+      "plan": "Tarifa de luz (FV)",
+      "url": "https://proximaenergia.com/tarifa-cristalina/",
+      "updated": "8 Jun 2024",
+      "accessTariff": "2.0TD (Indexado)",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "IDX",
+        "FV*",
+        "CM"
+      ],
+      "fvOnly": true,
+      "indexed": true,
+      "comparable": false,
+      "notComparableReason": "Indexed price (PVPC/OMIE), varies hour by hour",
+      "power": {
+        "p1": 0.075903,
+        "p2": 0.001987
+      },
+      "energy": null,
+      "emc": null,
+      "monthlyFee": 9.8,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": null,
+        "priceText": "OMIE",
+        "compensates": "Potencia + consumo + f. Bono Social",
+        "includesPower": true
+      },
+      "virtualBattery": null
+    },
+    {
+      "id": "proxima-energia-tarifa-de-luz-con-bv-2-0td-indexado",
+      "provider": "Próxima Energía",
+      "plan": "Tarifa de luz (Con BV)",
+      "url": "https://proximaenergia.com/tarifa-cristalina/",
+      "updated": "8 Jun 2024",
+      "accessTariff": "2.0TD (Indexado)",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 10,
+      "cae": null,
+      "tags": [
+        "IDX",
+        "FV*",
+        "BV",
+        "CM"
+      ],
+      "fvOnly": true,
+      "indexed": true,
+      "comparable": false,
+      "notComparableReason": "Indexed price (PVPC/OMIE), varies hour by hour",
+      "power": {
+        "p1": 0.075903,
+        "p2": 0.001987
+      },
+      "energy": null,
+      "emc": null,
+      "monthlyFee": 13.7,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": null,
+        "priceText": "OMIE",
+        "compensates": "Potencia + consumo + f. Bono Social",
+        "includesPower": true
+      },
+      "virtualBattery": {
+        "text": "Sí, después de impuestos",
+        "beforeTax": false,
+        "appliesTo": "Total factura"
+      }
+    },
+    {
+      "id": "som-energia-tarifa-2-0td-som-2-0td",
+      "provider": "Som Energía",
+      "plan": "Tarifa 2.0TD SOM",
+      "url": "https://www.somenergia.coop/es/tarifas-luz/domestico-periodos",
+      "updated": "27 Ago 2026",
+      "accessTariff": "2.0TD",
+      "periods": 3,
+      "schedule": "Horario estándar 2.0TD",
+      "maxKw": 15,
+      "cae": null,
+      "tags": [
+        "FV"
+      ],
+      "fvOnly": false,
+      "indexed": false,
+      "comparable": true,
+      "notComparableReason": null,
+      "power": {
+        "p1": 0.082011,
+        "p2": 0.008096
+      },
+      "energy": {
+        "e1": 0.249,
+        "e2": 0.169,
+        "e3": 0.15
+      },
+      "emc": null,
+      "monthlyFee": null,
+      "socialBond": 0.024688,
+      "surplus": {
+        "price": 0.03,
+        "priceText": "0,03",
+        "compensates": "Solo energía",
+        "includesPower": false
+      },
+      "virtualBattery": null
+    }
+  ]
+}
