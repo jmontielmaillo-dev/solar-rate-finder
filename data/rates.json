@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-10-28T09:00:00.000Z",
+  "fetchedAt": "2026-10-30T11:27:09.112Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -745,7 +745,7 @@
       "provider": "Gana Energía",
       "plan": "Tarifa 24 horas",
       "url": "https://ganaenergia.com/tarifas-luz/24-horas",
-      "updated": "5 Oct 2026",
+      "updated": "29 Oct 2026",
       "accessTariff": "2.0A",
       "periods": 1,
       "schedule": "Horario estándar 2.0A",
@@ -763,9 +763,9 @@
         "p2": 0.099
       },
       "energy": {
-        "e1": 0.139,
-        "e2": 0.139,
-        "e3": 0.139
+        "e1": 0.149,
+        "e2": 0.149,
+        "e3": 0.149
       },
       "emc": null,
       "monthlyFee": null,
