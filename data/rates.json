@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-11-01T11:53:43.990Z",
+  "fetchedAt": "2026-11-02T13:37:54.371Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -1099,7 +1099,7 @@
       "provider": "Niba",
       "plan": "niba Zen",
       "url": "https://niba.es/",
-      "updated": "Lun 5 Oct 2026",
+      "updated": "Dom 1 Nov 2026",
       "accessTariff": "2.0A",
       "periods": 1,
       "schedule": "Horario estándar 2.0A",
@@ -1114,13 +1114,13 @@
       "comparable": true,
       "notComparableReason": null,
       "power": {
-        "p1": 0.091,
-        "p2": 0.091
+        "p1": 0.099,
+        "p2": 0.099
       },
       "energy": {
-        "e1": 0.123,
-        "e2": 0.123,
-        "e3": 0.123
+        "e1": 0.147,
+        "e2": 0.147,
+        "e3": 0.147
       },
       "emc": null,
       "monthlyFee": null,
@@ -1142,7 +1142,7 @@
       "provider": "Niba",
       "plan": "niba Tres",
       "url": "https://niba.es/",
-      "updated": "Lun 5 Oct 2026",
+      "updated": "Dom 1 Nov 2026",
       "accessTariff": "2.0TD",
       "periods": 3,
       "schedule": "Horario estándar 2.0TD",
@@ -1157,13 +1157,13 @@
       "comparable": true,
       "notComparableReason": null,
       "power": {
-        "p1": 0.077,
-        "p2": 0.077
+        "p1": 0.097,
+        "p2": 0.097
       },
       "energy": {
-        "e1": 0.197,
-        "e2": 0.147,
-        "e3": 0.087
+        "e1": 0.217,
+        "e2": 0.167,
+        "e3": 0.097
       },
       "emc": null,
       "monthlyFee": null,
@@ -1185,7 +1185,7 @@
       "provider": "Octopus Energy",
       "plan": "Octopus Solar",
       "url": "https://octopusenergy.es/precios/tarifa-solar",
-      "updated": "Dom 25 Oct 2026",
+      "updated": "Dom 1 Nov 2026",
       "accessTariff": "2.0TD",
       "periods": 3,
       "schedule": "Horario estándar 2.0TD",
@@ -1204,9 +1204,9 @@
         "p2": 0.118356
       },
       "energy": {
-        "e1": 0.273,
-        "e2": 0.17,
-        "e3": 0.143
+        "e1": 0.299,
+        "e2": 0.192,
+        "e3": 0.165
       },
       "emc": null,
       "monthlyFee": null,
