@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-11-02T13:37:54.371Z",
+  "fetchedAt": "2026-11-03T12:51:54.671Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -593,7 +593,7 @@
       "provider": "Electra energía",
       "plan": "Plan fijo",
       "url": "https://electracaldenseenergia.com/es/luz/",
-      "updated": "Mié 1 Abr 2026",
+      "updated": "Lun 2 Nov 2026",
       "accessTariff": "2.0A",
       "periods": 1,
       "schedule": "Horario estándar 2.0A",
@@ -611,16 +611,16 @@
         "p2": 0.003485
       },
       "energy": {
-        "e1": 0.174056,
-        "e2": 0.174056,
-        "e3": 0.174056
+        "e1": 0.218979,
+        "e2": 0.218979,
+        "e3": 0.218979
       },
       "emc": null,
       "monthlyFee": null,
       "socialBond": 0.024688,
       "surplus": {
-        "price": 0.025,
-        "priceText": "0,025",
+        "price": 0.032,
+        "priceText": "0,032",
         "compensates": "Consumo",
         "includesPower": false
       },
@@ -631,7 +631,7 @@
       "provider": "Electra energía",
       "plan": "Pla Flexa 2",
       "url": "https://electracaldenseenergia.com/es/luz/",
-      "updated": "Mié 1 Abr 2026",
+      "updated": "Lun 2 Nov 2026",
       "accessTariff": "PLA FLEXA 2",
       "periods": null,
       "schedule": "Horario especial PLA FLEXA 2",
@@ -649,16 +649,16 @@
         "p2": 0.003485
       },
       "energy": {
-        "e1": 0.211106,
-        "e2": 0.139823,
+        "e1": 0.261526,
+        "e2": 0.179493,
         "e3": null
       },
       "emc": null,
       "monthlyFee": null,
       "socialBond": 0.024688,
       "surplus": {
-        "price": 0.025,
-        "priceText": "0,025",
+        "price": 0.032,
+        "priceText": "0,032",
         "compensates": "Consumo",
         "includesPower": false
       },
@@ -669,7 +669,7 @@
       "provider": "Electra energía",
       "plan": "Plan Flexa 2",
       "url": "https://electracaldenseenergia.com/es/luz/",
-      "updated": "Mié 1 Abr 2026",
+      "updated": "Lun 2 Nov 2026",
       "accessTariff": "2.0TD",
       "periods": 3,
       "schedule": "Horario estándar 2.0TD",
@@ -687,16 +687,16 @@
         "p2": 0.003485
       },
       "energy": {
-        "e1": 0.238826,
-        "e2": 0.16786,
-        "e3": 0.138133
+        "e1": 0.290394,
+        "e2": 0.213157,
+        "e3": 0.178799
       },
       "emc": null,
       "monthlyFee": null,
       "socialBond": 0.024688,
       "surplus": {
-        "price": 0.025,
-        "priceText": "0,025",
+        "price": 0.032,
+        "priceText": "0,032",
         "compensates": "Consumo",
         "includesPower": false
       },
