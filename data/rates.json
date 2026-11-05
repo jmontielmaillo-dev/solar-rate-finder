@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-11-04T13:04:05.488Z",
+  "fetchedAt": "2026-11-05T13:17:02.093Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -428,7 +428,7 @@
       "provider": "Repsol",
       "plan": "Tarifa Solar Batería Virtual",
       "url": "https://www.repsol.es/particulares/hogar/energia-solar/tarifas/tarifa-bateria-virtual/",
-      "updated": "Jue 1 Oct 2026",
+      "updated": "Mié 4 Nov 2026",
       "accessTariff": "2.0A",
       "periods": 1,
       "schedule": "Horario estándar 2.0A",
@@ -444,13 +444,13 @@
       "comparable": true,
       "notComparableReason": null,
       "power": {
-        "p1": 0.090137,
-        "p2": 0.090137
+        "p1": 0.099726,
+        "p2": 0.099726
       },
       "energy": {
-        "e1": 0.1499,
-        "e2": 0.1499,
-        "e3": 0.1499
+        "e1": 0.1799,
+        "e2": 0.1799,
+        "e3": 0.1799
       },
       "emc": null,
       "monthlyFee": 1.99,
@@ -783,7 +783,7 @@
       "provider": "Gana Energía",
       "plan": "Tarifa Precio de Mercado",
       "url": "https://ganaenergia.com/tarifas-luz/precio-mercado",
-      "updated": "Mié 1 Jul 2026",
+      "updated": "Mié 4 Nov 2026",
       "accessTariff": "2.0TD (Indexado)",
       "periods": 3,
       "schedule": "Horario estándar 2.0TD",
@@ -804,7 +804,7 @@
       },
       "energy": null,
       "emc": null,
-      "monthlyFee": 5.01,
+      "monthlyFee": 6,
       "socialBond": 0.024688,
       "surplus": {
         "price": 0.06,
