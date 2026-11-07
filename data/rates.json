@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-11-05T13:17:02.093Z",
+  "fetchedAt": "2026-11-07T11:47:17.217Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -550,7 +550,7 @@
       "provider": "Bonpreu",
       "plan": "Solar",
       "url": "https://www.bonpreuesclat.cat/es/planes-energia-bonpreu",
-      "updated": "Lun 7 Sep 2026",
+      "updated": "Vie 6 Nov 2026",
       "accessTariff": "2.0TD",
       "periods": 3,
       "schedule": "Horario estándar 2.0TD",
@@ -565,13 +565,13 @@
       "comparable": true,
       "notComparableReason": null,
       "power": {
-        "p1": 0.072999,
-        "p2": 0.072999
+        "p1": 0.093151,
+        "p2": 0.093151
       },
       "energy": {
-        "e1": 0.205003,
-        "e2": 0.128574,
-        "e3": 0.098753
+        "e1": 0.238234,
+        "e2": 0.159585,
+        "e3": 0.114892
       },
       "emc": null,
       "monthlyFee": null,
