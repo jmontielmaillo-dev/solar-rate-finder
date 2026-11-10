@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-11-07T11:47:17.217Z",
+  "fetchedAt": "2026-11-10T13:34:39.409Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -1185,7 +1185,7 @@
       "provider": "Octopus Energy",
       "plan": "Octopus Solar",
       "url": "https://octopusenergy.es/precios/tarifa-solar",
-      "updated": "Dom 1 Nov 2026",
+      "updated": "Lun 9 Nov 2026",
       "accessTariff": "2.0TD",
       "periods": 3,
       "schedule": "Horario estándar 2.0TD",
@@ -1204,9 +1204,9 @@
         "p2": 0.118356
       },
       "energy": {
-        "e1": 0.299,
-        "e2": 0.192,
-        "e3": 0.165
+        "e1": 0.254,
+        "e2": 0.187,
+        "e3": 0.156
       },
       "emc": null,
       "monthlyFee": null,
