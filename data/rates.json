@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-11-10T13:34:39.409Z",
+  "fetchedAt": "2026-11-12T13:50:29.851Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -698,44 +698,6 @@
         "price": 0.032,
         "priceText": "0,032",
         "compensates": "Consumo",
-        "includesPower": false
-      },
-      "virtualBattery": null
-    },
-    {
-      "id": "estabanell-pla-solar-estabanell-ps",
-      "provider": "Estabanell",
-      "plan": "Pla Solar",
-      "url": "https://estabanell.com/energia/solar/",
-      "updated": "Mar 17 Feb 2026",
-      "accessTariff": "Estabanell PS",
-      "periods": null,
-      "schedule": "Horario especial Estabanell PS",
-      "maxKw": 15,
-      "cae": null,
-      "tags": [
-        "FV*"
-      ],
-      "fvOnly": true,
-      "indexed": false,
-      "comparable": false,
-      "notComparableReason": "Uses its own time bands (Estabanell PS), not the standard 3 periods",
-      "power": {
-        "p1": 0.114259,
-        "p2": 0.040344
-      },
-      "energy": {
-        "e1": 0.213,
-        "e2": 0.088,
-        "e3": null
-      },
-      "emc": null,
-      "monthlyFee": null,
-      "socialBond": 0.024688,
-      "surplus": {
-        "price": 0.03,
-        "priceText": "0,03",
-        "compensates": "Solo energía",
         "includesPower": false
       },
       "virtualBattery": null
