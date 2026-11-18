@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-11-12T13:50:29.851Z",
+  "fetchedAt": "2026-11-18T14:14:11.651Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -43,7 +43,7 @@
       "provider": "Iberdrola",
       "plan": "Plan Online",
       "url": "https://www.iberdrola.es/luz/plan-online",
-      "updated": "Mié 16 Sep 2026",
+      "updated": "Mar 17 Nov 2026",
       "accessTariff": "2.0A",
       "periods": 1,
       "schedule": "Horario estándar 2.0A",
@@ -58,13 +58,13 @@
       "comparable": true,
       "notComparableReason": null,
       "power": {
-        "p1": 0.119151,
-        "p2": 0.078055
+        "p1": 0.106822,
+        "p2": 0.106822
       },
       "energy": {
-        "e1": 0.1499,
-        "e2": 0.1499,
-        "e3": 0.1499
+        "e1": 0.1519,
+        "e2": 0.1519,
+        "e3": 0.1519
       },
       "emc": null,
       "monthlyFee": null,
@@ -86,7 +86,7 @@
       "provider": "Iberdrola",
       "plan": "Plan Online 3 periodos",
       "url": "https://www.iberdrola.es/luz/plan-online-tres-periodos",
-      "updated": "Mar 3 Nov 2026",
+      "updated": "Mar 17 Nov 2026",
       "accessTariff": "2.0TD",
       "periods": 3,
       "schedule": "Horario estándar 2.0TD",
@@ -102,12 +102,12 @@
       "notComparableReason": null,
       "power": {
         "p1": 0.090411,
-        "p2": 0.023562
+        "p2": 0.030137
       },
       "energy": {
-        "e1": 0.2116,
-        "e2": 0.1566,
-        "e3": 0.1236
+        "e1": 0.208952,
+        "e2": 0.153952,
+        "e3": 0.120952
       },
       "emc": null,
       "monthlyFee": null,
@@ -129,7 +129,7 @@
       "provider": "Iberdrola",
       "plan": "Plan Estable",
       "url": "https://www.iberdrola.es/luz/plan-estable",
-      "updated": "Mar 3 Nov 2026",
+      "updated": "Mar 17 Nov 2026",
       "accessTariff": "2.0A",
       "periods": 1,
       "schedule": "Horario estándar 2.0A",
@@ -144,13 +144,13 @@
       "comparable": true,
       "notComparableReason": null,
       "power": {
-        "p1": 0.109562,
-        "p2": 0.099973
+        "p1": 0.106822,
+        "p2": 0.106822
       },
       "energy": {
-        "e1": 0.1699,
-        "e2": 0.1699,
-        "e3": 0.1699
+        "e1": 0.175553,
+        "e2": 0.175553,
+        "e3": 0.175553
       },
       "emc": null,
       "monthlyFee": null,
@@ -172,7 +172,7 @@
       "provider": "Iberdrola",
       "plan": "Plan Más Ahorro",
       "url": "https://www.iberdrola.es/luz/plan-mas-ahorro",
-      "updated": "Mar 3 Nov 2026",
+      "updated": "Mar 17 Nov 2026",
       "accessTariff": "2.0A",
       "periods": 1,
       "schedule": "Horario estándar 2.0A",
@@ -187,13 +187,13 @@
       "comparable": true,
       "notComparableReason": null,
       "power": {
-        "p1": 0.109562,
-        "p2": 0.099973
+        "p1": 0.106822,
+        "p2": 0.106822
       },
       "energy": {
-        "e1": 0.17991,
-        "e2": 0.17991,
-        "e3": 0.17991
+        "e1": 0.1849,
+        "e2": 0.1849,
+        "e3": 0.1849
       },
       "emc": null,
       "monthlyFee": null,
@@ -215,7 +215,7 @@
       "provider": "Iberdrola",
       "plan": "Plan Solar",
       "url": "https://www.iberdrola.es/luz/tarifas/plan-solar",
-      "updated": "Mar 3 Nov 2026",
+      "updated": "Mar 17 Nov 2026",
       "accessTariff": "IBER.PS2",
       "periods": null,
       "schedule": "Horario especial IBER.PS2",
@@ -230,12 +230,12 @@
       "comparable": false,
       "notComparableReason": "Uses its own time bands (IBER.PS2), not the standard 3 periods",
       "power": {
-        "p1": 0.109562,
-        "p2": 0.099973
+        "p1": 0.106822,
+        "p2": 0.106822
       },
       "energy": {
-        "e1": 0.2798,
-        "e2": 0.1399,
+        "e1": 0.2998,
+        "e2": 0.1499,
         "e3": null
       },
       "emc": null,
@@ -258,7 +258,7 @@
       "provider": "Iberdrola",
       "plan": "Plan Ahorro Inteligente",
       "url": "https://www.iberdrola.es/luz/plan-ahorro-inteligente",
-      "updated": "Mar 3 Nov 2026",
+      "updated": "Mar 17 Nov 2026",
       "accessTariff": "IBER.8H+CON",
       "periods": null,
       "schedule": "Horario especial IBER.8H+CON",
@@ -272,8 +272,8 @@
       "comparable": false,
       "notComparableReason": "Uses its own time bands (IBER.8H+CON), not the standard 3 periods",
       "power": {
-        "p1": 0.109562,
-        "p2": 0.099973
+        "p1": 0.106822,
+        "p2": 0.106822
       },
       "energy": {
         "e1": 0.23998,
