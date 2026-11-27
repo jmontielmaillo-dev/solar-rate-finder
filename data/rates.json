@@ -1,6 +1,6 @@
 {
   "source": "https://www.simuladorfacturaluz.es/tarifas-de-luz/",
-  "fetchedAt": "2026-11-24T15:58:19.937Z",
+  "fetchedAt": "2026-11-27T15:14:49.327Z",
   "notes": "Prices without taxes. Power in €/kW/day, energy and surplus in €/kWh, monthly fee in €/month, social bond financing in €/day.",
   "rates": [
     {
@@ -1267,7 +1267,7 @@
       "provider": "Som Energía",
       "plan": "Tarifa 2.0TD SOM",
       "url": "https://www.somenergia.coop/es/tarifas-luz/domestico-periodos",
-      "updated": "Jue 27 Ago 2026",
+      "updated": "Jue 26 Nov 2026",
       "accessTariff": "2.0TD",
       "periods": 3,
       "schedule": "Horario estándar 2.0TD",
@@ -1281,13 +1281,13 @@
       "comparable": true,
       "notComparableReason": null,
       "power": {
-        "p1": 0.082011,
-        "p2": 0.008096
+        "p1": 0.083551,
+        "p2": 0.009636
       },
       "energy": {
-        "e1": 0.249,
-        "e2": 0.169,
-        "e3": 0.15
+        "e1": 0.288,
+        "e2": 0.196,
+        "e3": 0.175
       },
       "emc": null,
       "monthlyFee": null,
